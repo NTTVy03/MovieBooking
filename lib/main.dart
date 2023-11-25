@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moviebooking_21120168/pages/login.dart';
+import 'package:moviebooking_21120168/pages/register.dart';
 
 void main() {
   runApp(const MyApp());
@@ -33,7 +34,7 @@ class _MyAppState extends State<MyApp> {
         //   showNotification: _checkPendingNotificationRequests,
         // ),
         // initialRoute: !auth.isAuth ? null : widget.initialRoute,
-        home: LoginPage(),
+        home: RegisterPage(),
         routes: {
           //LoginPage.routeName: (ctx) => LoginPage();
         });
