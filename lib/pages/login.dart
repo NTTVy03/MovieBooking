@@ -33,24 +33,63 @@ class _LoginPage extends State<LoginPage> {
     );
 
     // request to sign in
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-      email: _emailController.text,
-      password: _passwordController.text,
-    );
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
 
-    // pop the loading circle
-    Navigator.pop(context);
-    // try {
-    //   final credential = await FirebaseAuth.instance
-    //       .signInWithEmailAndPassword(email: emailAddress, password: password);
-    // } on FirebaseAuthException catch (e) {
-    //   if (e.code == 'user-not-found') {
-    //     print('No user found for that email.');
-    //   } else if (e.code == 'wrong-password') {
-    //     print('Wrong password provided for that user.');
-    //   }
-    // }
+      // pop the loading circle
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      // pop the loading circle
+      Navigator.pop(context);
+
+      loginFailMessage();
+      // // Wrong EMAIL
+      // if (e.code == "user-not-found") {
+      //   wrongEmailMessage();
+      // }
+
+      // // Wrong PASSWORD
+      // else if (e.code == "wrong-password") {
+      //   wrongPasswordMessage();
+      // }
+    }
   }
+
+  void loginFailMessage() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const AlertDialog(
+          title: Text("Login Fail. Check your Email and Password!"),
+        );
+      },
+    );
+  }
+
+  // void wrongEmailMessage() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return const AlertDialog(
+  //         title: Text("Incorrect Email"),
+  //       );
+  //     },
+  //   );
+  // }
+
+  // void wrongPasswordMessage() {
+  //   showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return const AlertDialog(
+  //         title: Text("Incorrect Password"),
+  //       );
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
