@@ -22,11 +22,24 @@ class _LoginPage extends State<LoginPage> {
   }
 
   void handleLogin() async {
+    // show loading circle
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
+    // request to sign in
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: _emailController.text,
       password: _passwordController.text,
     );
 
+    // pop the loading circle
+    Navigator.pop(context);
     // try {
     //   final credential = await FirebaseAuth.instance
     //       .signInWithEmailAndPassword(email: emailAddress, password: password);
