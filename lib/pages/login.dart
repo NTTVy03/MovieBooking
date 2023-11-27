@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_text_fields/material_text_fields.dart';
 
@@ -20,13 +21,22 @@ class _LoginPage extends State<LoginPage> {
     print("You forgot your password???");
   }
 
-  void handleLogin() {
-    print(
-        "#############################################################################");
-    print(_emailController.text);
-    print(_passwordController.text);
-    print(
-        "#############################################################################");
+  void handleLogin() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+
+    // try {
+    //   final credential = await FirebaseAuth.instance
+    //       .signInWithEmailAndPassword(email: emailAddress, password: password);
+    // } on FirebaseAuthException catch (e) {
+    //   if (e.code == 'user-not-found') {
+    //     print('No user found for that email.');
+    //   } else if (e.code == 'wrong-password') {
+    //     print('Wrong password provided for that user.');
+    //   }
+    // }
   }
 
   @override
@@ -37,34 +47,49 @@ class _LoginPage extends State<LoginPage> {
     return Scaffold(
         body: SafeArea(
             child: Column(children: [
+      // Login text
       const Center(
           child: Text(
         "Login",
         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
       )),
+
+      // Login to your account to continue
       const Text(
         "Login to your account to continue",
         style: TextStyle(color: Color.fromARGB(100, 1, 1, 1)),
       ),
-      MaterialTextField(
-        keyboardType: TextInputType.emailAddress,
-        hint: 'Email',
-        labelText: 'Email',
-        textInputAction: TextInputAction.next,
-        prefixIcon: const Icon(Icons.email_outlined),
-        controller: _emailController,
-        // onChanged: (text) => handleTextFieldOnTap(text),
+
+      // Email Textfield
+      Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: MaterialTextField(
+          keyboardType: TextInputType.emailAddress,
+          hint: 'Email',
+          labelText: 'Email',
+          textInputAction: TextInputAction.next,
+          prefixIcon: const Icon(Icons.email_outlined),
+          controller: _emailController,
+          // onChanged: (text) => handleTextFieldOnTap(text),
+        ),
       ),
-      MaterialTextField(
-        keyboardType: TextInputType.visiblePassword,
-        hint: 'Password',
-        labelText: 'Password',
-        textInputAction: TextInputAction.done,
-        obscureText: true,
-        prefixIcon: const Icon(Icons.lock),
-        // suffixIcon: const Icon(Icons.visibility),
-        controller: _passwordController,
+
+      // Password Textfield
+      Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: MaterialTextField(
+          keyboardType: TextInputType.visiblePassword,
+          hint: 'Password',
+          labelText: 'Password',
+          textInputAction: TextInputAction.done,
+          obscureText: true,
+          prefixIcon: const Icon(Icons.lock),
+          // suffixIcon: const Icon(Icons.visibility),
+          controller: _passwordController,
+        ),
       ),
+
+      // Forgot Pasword
       Align(
         alignment: Alignment.centerRight,
         child: Container(
@@ -77,6 +102,8 @@ class _LoginPage extends State<LoginPage> {
                       fontSize: 14, color: Color.fromARGB(255, 33, 70, 219)),
                 ))),
       ),
+
+      //Login Button
       Container(
         width: 120,
         height: 40,

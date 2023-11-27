@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:moviebooking_21120168/pages/auth.dart';
+import 'package:moviebooking_21120168/pages/home.dart';
 import 'package:moviebooking_21120168/pages/login.dart';
 import 'package:moviebooking_21120168/pages/register.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -34,7 +42,7 @@ class _MyAppState extends State<MyApp> {
         //   showNotification: _checkPendingNotificationRequests,
         // ),
         // initialRoute: !auth.isAuth ? null : widget.initialRoute,
-        home: RegisterPage(),
+        home: AuthPage(),
         routes: {
           //LoginPage.routeName: (ctx) => LoginPage();
         });
