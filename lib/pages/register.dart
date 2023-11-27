@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_text_fields/material_text_fields.dart';
+import 'package:moviebooking_21120168/pages/login.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -16,19 +18,86 @@ class _RegisterPage extends State<RegisterPage> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPwController = TextEditingController();
 
-  void handleCreateAccount() {
-    print("#######################################");
-    print("Create Account with:");
-    print(_userNameController.text);
-    print(_emailController.text);
-    print(_passwordController.text);
-    print(_confirmPwController.text);
+  void handleCreateAccount() async {
+    if (_passwordController.text != _confirmPwController.text) {
+      showErrorMessage("Confirm password is not correct!");
+      return;
+    }
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text,
+        password: _passwordController.text,
+      );
+
+      // pop the loading circle
+      Navigator.pop(context);
+
+      showSuccessMessage("Account is created");
+    } on FirebaseAuthException catch (e) {
+      // pop the loading circle
+      Navigator.pop(context);
+
+      if (e.code == 'weak-password') {
+        showErrorMessage("Week password");
+      } else if (e.code == 'email-already-in-use') {
+        showErrorMessage("Email already in use");
+      }
+    } catch (e) {
+      showErrorMessage(e.toString());
+    }
   }
 
-  void handleAlreadyHaveAccount() {
-    print("#######################################");
-    print("Already have a account, move to log in");
+  void showSuccessMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Done'),
+          content: Text(message), // Set the error message as the content
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
+
+  void showErrorMessage(String message) {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text(message), // Set the error message as the content
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  void handleAlreadyHaveAccount() {}
 
   @override
   Widget build(BuildContext context) {

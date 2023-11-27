@@ -42,7 +42,7 @@ class _MyAppState extends State<MyApp> {
         //   showNotification: _checkPendingNotificationRequests,
         // ),
         // initialRoute: !auth.isAuth ? null : widget.initialRoute,
-        home: AuthPage(),
+        home: RegisterPage(),
         routes: {
           //LoginPage.routeName: (ctx) => LoginPage();
         });

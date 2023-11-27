@@ -45,7 +45,7 @@ class _LoginPage extends State<LoginPage> {
       // pop the loading circle
       Navigator.pop(context);
 
-      loginFailMessage();
+      showMessage("Login Fail. Check your Email and Password!");
       // // Wrong EMAIL
       // if (e.code == "user-not-found") {
       //   wrongEmailMessage();
@@ -58,12 +58,21 @@ class _LoginPage extends State<LoginPage> {
     }
   }
 
-  void loginFailMessage() {
+  void showMessage(String message) {
     showDialog(
       context: context,
       builder: (context) {
-        return const AlertDialog(
-          title: Text("Login Fail. Check your Email and Password!"),
+        return AlertDialog(
+          title: Text('Error'),
+          content: Text(message), // Set the error message as the content
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context); // Close the dialog
+              },
+              child: Text('OK'),
+            ),
+          ],
         );
       },
     );
