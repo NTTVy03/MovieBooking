@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:moviebooking_21120168/pages/home.dart';
 import 'package:moviebooking_21120168/pages/login.dart';
+import 'package:moviebooking_21120168/pages/login_or_register.dart';
 
 class AuthPage extends StatelessWidget {
   const AuthPage({super.key});
@@ -20,7 +21,7 @@ class AuthPage extends StatelessWidget {
 
           // user id NOT logged in
           else {
-            return LoginPage();
+            return LoginOrRegisterPage();
           }
         },
       ),
