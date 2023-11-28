@@ -1,4 +1,3 @@
-import 'package:card_swiper/card_swiper.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_text_fields/material_text_fields.dart';
@@ -12,16 +11,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPage extends State<LoginPage> {
-  static const routeName = '/profile-screen';
+  // static const routeName = '/profile-screen';
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
-  void handleForgotPassword() {
-    print(
-        "#############################################################################");
-    print("You forgot your password???");
-  }
+  void handleForgotPassword() {}
 
   void handleLogin() async {
     // show loading circle
@@ -47,8 +42,8 @@ class _LoginPage extends State<LoginPage> {
       // pop the loading circle
       Navigator.pop(context);
 
-      showMessage("Login Fail. Check your Email and Password!");
-      // showMessage(e.code);
+      // showMessage("Login Fail. Check your Email and Password!");
+      showMessage(e.code);
     }
   }
 
@@ -57,14 +52,14 @@ class _LoginPage extends State<LoginPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Error'),
+          title: const Text('Error'),
           content: Text(message), // Set the error message as the content
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(context); // Close the dialog
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );
@@ -159,7 +154,7 @@ class _LoginPage extends State<LoginPage> {
 
         Padding(
           padding: const EdgeInsets.all(20),
-          child: Container(
+          child: SizedBox(
             width:
                 double.infinity, // Set the width to match the parent container
             child: Center(

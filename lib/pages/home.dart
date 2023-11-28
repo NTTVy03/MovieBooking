@@ -1,8 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:circular_profile_avatar/circular_profile_avatar.dart';
-import 'package:card_swiper/card_swiper.dart';
+import 'package:moviebooking_21120168/pages/allmovie.dart';
+import 'package:moviebooking_21120168/pages/moviepage.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -10,9 +9,61 @@ class HomePage extends StatelessWidget {
   final user = FirebaseAuth.instance.currentUser!;
 
   void handleSignOut() {
-    print("############################################");
     FirebaseAuth.instance.signOut();
   }
+
+  final List<Map> listMovies = [
+    {
+      'title': 'Movie 1',
+      'duration': '1h 12m',
+      'img_url': 'assets/images/allmovies/img1.jpg'
+    },
+    {
+      'title': 'Movie 2',
+      'duration': '1h 22m',
+      'img_url': 'assets/images/allmovies/img2.jpg'
+    },
+    {
+      'title': 'Movie 3',
+      'duration': '1h 1m',
+      'img_url': 'assets/images/allmovies/img3.jpg'
+    },
+    {
+      'title': 'Movie 4',
+      'duration': '1h 12m',
+      'img_url': 'assets/images/allmovies/img4.jpg'
+    },
+    {
+      'title': 'Movie 5',
+      'duration': '1h 5m',
+      'img_url': 'assets/images/allmovies/img5.jpg'
+    },
+    {
+      'title': 'Movie 6',
+      'duration': '1h 10m',
+      'img_url': 'assets/images/allmovies/img1.jpg'
+    },
+    {
+      'title': 'Movie 7',
+      'duration': '1h 12m',
+      'img_url': 'assets/images/allmovies/img3.jpg'
+    },
+    {
+      'title': 'Movie 8',
+      'duration': '2h 12m',
+      'img_url': 'assets/images/allmovies/img2.jpg'
+    },
+    {
+      'title': 'Movie 9',
+      'duration': '1h 2m',
+      'img_url': 'assets/images/allmovies/img4.jpg'
+    },
+    {
+      'title': 'Movie 10',
+      'duration': '1h 3m',
+      'img_url': 'assets/images/allmovies/img5.jpg'
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -20,51 +71,137 @@ class HomePage extends StatelessWidget {
     // var screenHeight = MediaQuery.of(context).size.height;
 
     return Scaffold(
-        body: SafeArea(
-            child: Column(children: [
-      Row(
-        children: [
-          const Column(
-            children: [Text("Now Showing"), Text("Movies in Chennai")],
-          ),
-          const SizedBox(
-            width: 20,
-          ),
-          InkWell(
-            onTap: handleSignOut,
-            child: Text("Log Out"),
-          )
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Column(
+            children: [
+              // header
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  // Text
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Now Showing ..",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 28),
+                      ),
+                      Text(
+                        "Movies in Chennai",
+                        style: TextStyle(color: Colors.grey),
+                      ),
+                    ],
+                  ),
 
-          // Align(
-          //   alignment: Alignment.centerRight,
-          //   child: CircularProfileAvatar(
-          //     'https://avatars0.githubusercontent.com/u/8264639?s=460&v=4', //sets image path, it should be a URL string. default value is empty string, if path is empty it will display only initials
-          //     radius: 100, // sets radius, default 50.0
-          //     backgroundColor: Colors
-          //         .transparent, // sets background color, default Colors.white
-          //     elevation:
-          //         5.0, // sets elevation (shadow of the profile picture), default value is 0.0
-          //     foregroundColor: Colors.brown.withOpacity(
-          //         0.5), //sets foreground colour, it works if showInitialTextAbovePicture = true , default Colors.transparent
-          //     cacheImage:
-          //         true, // allow widget to cache image against provided url
-          //     imageFit: BoxFit.cover, // sets on tap
-          //     onTap: handleSignOut,
-          //   ),
-          // )
-        ],
+                  // Avatar
+                  IconButton(
+                    onPressed: handleSignOut,
+                    icon: const Icon(Icons.account_circle),
+                    iconSize: 50,
+                  )
+                ],
+              ),
+
+              // new movies stack
+              const Stack(
+                children: [],
+              ),
+
+              //
+              // list view movies
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Text All movies
+                    const Text(
+                      "All Movies",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+
+                    // text view all
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const AllMoviePage(),
+                            ));
+                      },
+                      child: const Text(
+                        "View all",
+                        style: TextStyle(
+                            color: Colors.blue, fontWeight: FontWeight.w400),
+                      ),
+                    )
+                  ],
+                ),
+              ),
+
+              // List movies
+              SizedBox(
+                height: 250,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: listMovies.length,
+                  itemBuilder: (context, index) => GestureDetector(
+                    onTap: () => {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MoviePage(
+                            index: index,
+                          ),
+                        ),
+                      )
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            // image
+                            SizedBox(
+                              height: 150,
+                              width: 90,
+                              child: ClipRRect(
+                                borderRadius:
+                                    const BorderRadius.all(Radius.circular(10)),
+                                child: Image.asset(
+                                  listMovies[index]['img_url'],
+                                  fit: BoxFit.fill,
+                                ),
+                              ),
+                            ),
+
+                            const SizedBox(height: 8),
+                            // title
+                            Text(
+                              listMovies[index]['title'],
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.w400),
+                            ),
+
+                            // duration
+                            Text(
+                              listMovies[index]['duration'],
+                              style: const TextStyle(color: Colors.grey),
+                            )
+                          ]),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
-      // Swiper(
-      //   itemBuilder: (BuildContext context, int index) {
-      //     return Image.network(
-      //       "https://via.placeholder.com/288x188",
-      //       fit: BoxFit.fill,
-      //     );
-      //   },
-      //   itemCount: 10,
-      //   itemWidth: 300.0,
-      //   layout: SwiperLayout.STACK,
-      // )
-    ])));
+    );
   }
 }

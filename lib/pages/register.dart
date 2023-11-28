@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_text_fields/material_text_fields.dart';
-import 'package:moviebooking_21120168/pages/login.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -12,7 +11,7 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPage extends State<RegisterPage> {
-  static const routeName = '/profile-screen';
+  // static const routeName = '/registerpage';
 
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
@@ -20,6 +19,14 @@ class _RegisterPage extends State<RegisterPage> {
   final TextEditingController _confirmPwController = TextEditingController();
 
   void handleCreateAccount() async {
+    if (_passwordController.text == "" ||
+        _confirmPwController.text == "" ||
+        _userNameController.text == "" ||
+        _emailController.text == "") {
+      showErrorMessage("Please fill all fields before submit");
+      return;
+    }
+
     if (_passwordController.text != _confirmPwController.text) {
       showErrorMessage("Confirm password is not correct!");
       return;
@@ -63,14 +70,14 @@ class _RegisterPage extends State<RegisterPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Done'),
+          title: const Text('Done'),
           content: Text(message), // Set the error message as the content
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(context); // Close the dialog
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );
@@ -83,14 +90,14 @@ class _RegisterPage extends State<RegisterPage> {
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Error'),
+          title: const Text('Error'),
           content: Text(message), // Set the error message as the content
           actions: [
             TextButton(
               onPressed: () {
                 Navigator.pop(context); // Close the dialog
               },
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );
@@ -172,7 +179,7 @@ class _RegisterPage extends State<RegisterPage> {
           ),
           Padding(
             padding: const EdgeInsets.all(20),
-            child: Container(
+            child: SizedBox(
               width: double
                   .infinity, // Set the width to match the parent container
               child: Center(
