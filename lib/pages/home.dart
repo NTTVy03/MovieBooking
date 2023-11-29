@@ -1,69 +1,19 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:moviebooking_21120168/data/Globals.dart';
 import 'package:moviebooking_21120168/pages/allmovie.dart';
 import 'package:moviebooking_21120168/pages/moviepage.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
+  final List<Map> listMovies = GlobalsData.allMovies;
+  final List<Map> hotMovies = GlobalsData.hotMovies;
 
   final user = FirebaseAuth.instance.currentUser!;
 
   void handleSignOut() {
     FirebaseAuth.instance.signOut();
   }
-
-  final List<Map> listMovies = [
-    {
-      'title': 'Movie 1',
-      'duration': '1h 12m',
-      'img_url': 'assets/images/allmovies/img1.jpg'
-    },
-    {
-      'title': 'Movie 2',
-      'duration': '1h 22m',
-      'img_url': 'assets/images/allmovies/img2.jpg'
-    },
-    {
-      'title': 'Movie 3',
-      'duration': '1h 1m',
-      'img_url': 'assets/images/allmovies/img3.jpg'
-    },
-    {
-      'title': 'Movie 4',
-      'duration': '1h 12m',
-      'img_url': 'assets/images/allmovies/img4.jpg'
-    },
-    {
-      'title': 'Movie 5',
-      'duration': '1h 5m',
-      'img_url': 'assets/images/allmovies/img5.jpg'
-    },
-    {
-      'title': 'Movie 6',
-      'duration': '1h 10m',
-      'img_url': 'assets/images/allmovies/img1.jpg'
-    },
-    {
-      'title': 'Movie 7',
-      'duration': '1h 12m',
-      'img_url': 'assets/images/allmovies/img3.jpg'
-    },
-    {
-      'title': 'Movie 8',
-      'duration': '2h 12m',
-      'img_url': 'assets/images/allmovies/img2.jpg'
-    },
-    {
-      'title': 'Movie 9',
-      'duration': '1h 2m',
-      'img_url': 'assets/images/allmovies/img4.jpg'
-    },
-    {
-      'title': 'Movie 10',
-      'duration': '1h 3m',
-      'img_url': 'assets/images/allmovies/img5.jpg'
-    },
-  ];
 
   @override
   Widget build(BuildContext context) {
