@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moviebooking_21120168/pages/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:moviebooking_21120168/pages/confirm_ticket_booking.dart';
 import 'package:moviebooking_21120168/pages/seatbooking.dart';
 import 'firebase_options.dart';
 
@@ -37,7 +38,10 @@ class _MyAppState extends State<MyApp> {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'CGVy',
-      home: SeatBookingPage(
+      home:
+          // ConfirmTicketBookingPage(),
+
+          SeatBookingPage(
         time: "9:30 AM",
         date: "FRIDAY, 12",
         movieTitle: "Ant Man and The Wasp",

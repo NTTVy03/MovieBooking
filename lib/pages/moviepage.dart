@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moviebooking_21120168/data/Globals.dart';
+import 'package:moviebooking_21120168/data/globals.dart';
 
 class MoviePage extends StatefulWidget {
   final int index;

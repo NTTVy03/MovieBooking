@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:moviebooking_21120168/data/Globals.dart';
+import 'package:moviebooking_21120168/data/globals.dart';
 import 'package:moviebooking_21120168/pages/allmovie.dart';
 import 'package:moviebooking_21120168/pages/moviepage.dart';
 
