@@ -17,9 +17,6 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var screenWidth = MediaQuery.of(context).size.width;
-    // var screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -56,12 +53,33 @@ class HomePage extends StatelessWidget {
                 ],
               ),
 
+              const SizedBox(height: 20),
+
               // new movies stack
-              const Stack(
-                children: [],
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Stack(
+                  alignment: AlignmentDirectional.center,
+                  children: [
+                    for (var i = 0; i < hotMovies.length; i++)
+                      SizedBox(
+                        height: 350,
+                        width: 180,
+                        child: ClipRRect(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10)),
+                          child: Image.asset(
+                            hotMovies[i]['img_url'],
+                            fit: BoxFit.fill,
+                          ),
+                        ),
+                      ),
+                  ],
+                ),
               ),
 
-              //
+              const SizedBox(height: 10),
+
               // list view movies
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -95,7 +113,7 @@ class HomePage extends StatelessWidget {
 
               // List movies
               SizedBox(
-                height: 250,
+                height: 220, // Set the desired height for the ListView.builder
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: listMovies.length,

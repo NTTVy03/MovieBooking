@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moviebooking_21120168/data/Globals.dart';
+import 'package:moviebooking_21120168/data/globals.dart';
 import 'package:moviebooking_21120168/pages/moviepage.dart';
 
 class AllMoviePage extends StatefulWidget {
@@ -67,10 +67,10 @@ class _AllMoviePageState extends State<AllMoviePage> {
                   onSubmitted: searchMovies,
                   controller: _searchcontroller,
                   decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search, size: 20),
+                    prefixIcon: const Icon(Icons.search, size: 20),
                     hintText: 'Search movies or theater',
-                    contentPadding:
-                        EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 30),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(40),
                     ),

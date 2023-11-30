@@ -76,6 +76,8 @@ class _LoginPage extends State<LoginPage> {
         body: SingleChildScrollView(
       child: SafeArea(
           child: Column(children: [
+        const SizedBox(height: 40),
+
         // Login text
         const Center(
             child: Text(
@@ -88,6 +90,8 @@ class _LoginPage extends State<LoginPage> {
           "Login to your account to continue",
           style: TextStyle(color: Color.fromARGB(100, 1, 1, 1)),
         ),
+
+        const SizedBox(height: 100),
 
         // Email Textfield
         Padding(
@@ -131,6 +135,8 @@ class _LoginPage extends State<LoginPage> {
                         fontSize: 14, color: Color.fromARGB(255, 33, 70, 219)),
                   ))),
         ),
+
+        const SizedBox(height: 40),
 
         //Login Button
         Container(

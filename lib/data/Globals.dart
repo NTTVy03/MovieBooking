@@ -1,3 +1,6 @@
+import 'package:book_my_seat/book_my_seat.dart';
+import 'package:moviebooking_21120168/Util/seatnumber.dart';
+
 class GlobalsData {
   static List<Map> hotMovies = [
     {
@@ -70,6 +73,177 @@ class GlobalsData {
     },
   ];
 
+  static List<List<SeatState>> seatstate = [
+    [
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.unselected,
+      SeatState.empty,
+    ],
+    [
+      SeatState.unselected,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.unselected,
+      SeatState.sold,
+    ],
+    [
+      SeatState.unselected,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.unselected,
+      SeatState.sold,
+    ],
+    [
+      SeatState.unselected,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.unselected,
+      SeatState.sold,
+    ],
+    [
+      SeatState.unselected,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.unselected,
+      SeatState.sold,
+    ],
+    [
+      SeatState.unselected,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.unselected,
+      SeatState.sold,
+    ],
+    [
+      SeatState.unselected,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.unselected,
+      SeatState.sold,
+    ],
+    [
+      SeatState.unselected,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.unselected,
+      SeatState.sold,
+    ],
+    [
+      SeatState.unselected,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.unselected,
+      SeatState.sold,
+    ],
+    [
+      SeatState.unselected,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.unselected,
+      SeatState.sold,
+    ],
+    [
+      SeatState.unselected,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.unselected,
+      SeatState.sold,
+    ],
+    [
+      SeatState.unselected,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.empty,
+      SeatState.sold,
+      SeatState.sold,
+      SeatState.unselected,
+      SeatState.sold,
+    ],
+  ].cast<List<SeatState>>();
+
   static Map getMovieInfoByIndex(int index) {
     return allMovies[index];
   }
@@ -87,5 +261,16 @@ class GlobalsData {
       }
     }
     return filteredList;
+  }
+
+  static List<List<SeatState>> getSeatState(
+      String movieTitle, String theater, String date, String time) {
+    return seatstate;
+  }
+
+  static void updateSeatState(Set<SeatNumber> seats) {
+    for (SeatNumber seat in seats) {
+      seatstate[seat.getRow()][seat.getCol()] = SeatState.sold;
+    }
   }
 }

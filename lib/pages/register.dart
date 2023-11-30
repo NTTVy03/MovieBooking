@@ -116,6 +116,7 @@ class _RegisterPage extends State<RegisterPage> {
           child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(children: [
+          const SizedBox(height: 40),
           const Center(
               child: Text(
             "Register",
@@ -125,6 +126,7 @@ class _RegisterPage extends State<RegisterPage> {
             "Signup for a new account",
             style: TextStyle(color: Color.fromARGB(100, 1, 1, 1)),
           ),
+          const SizedBox(height: 50),
           MaterialTextField(
               keyboardType: TextInputType.text,
               hint: 'Username',
@@ -155,6 +157,7 @@ class _RegisterPage extends State<RegisterPage> {
               obscureText: true,
               prefixIcon: const Icon(Icons.lock),
               controller: _confirmPwController),
+          const SizedBox(height: 40),
           Padding(
             padding: const EdgeInsets.only(
                 top: 20), // Set the desired padding values

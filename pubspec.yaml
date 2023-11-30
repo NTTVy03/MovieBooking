@@ -42,6 +42,7 @@ dependencies:
   card_swiper: ^3.0.1
   firebase_auth: ^4.14.1
   firebase_core: ^2.23.0
+  book_my_seat: ^1.0.1
 
 dev_dependencies:
   flutter_test:
@@ -69,6 +70,7 @@ flutter:
   assets:
     - assets/images/allmovies/
     - assets/images/hotmovies/
+    - assets/images/seatstate/
   
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
