@@ -7,7 +7,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
-  final List<Map> listMovies = GlobalsData.allMovies;
+  final List<Map> listMovies = GlobalsData.getBasicInfoMovies();
   final List<Map> hotMovies = GlobalsData.hotMovies;
 
   final user = FirebaseAuth.instance.currentUser!;

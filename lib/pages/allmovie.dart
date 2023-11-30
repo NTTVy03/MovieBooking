@@ -10,14 +10,14 @@ class AllMoviePage extends StatefulWidget {
 }
 
 class _AllMoviePageState extends State<AllMoviePage> {
-  List<Map> listMovies = GlobalsData.allMovies;
+  List<Map> listMovies = GlobalsData.getBasicInfoMovies();
   final TextEditingController _searchcontroller = TextEditingController();
 
   void searchMovies(String searchText) {
     String subTitle = searchText.replaceAll('\n', '');
 
     setState(() {
-      listMovies = GlobalsData.getMoviebyName(subTitle);
+      listMovies = GlobalsData.getBasicInfoMoviesbyName(subTitle);
     });
   }
 
@@ -130,7 +130,7 @@ class _AllMoviePageState extends State<AllMoviePage> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => MoviePage(
-                                index: index,
+                                index: listMovies[index]['id'],
                               ),
                             ),
                           )

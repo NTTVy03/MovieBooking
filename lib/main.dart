@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moviebooking_21120168/pages/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:moviebooking_21120168/pages/confirm_ticket_booking.dart';
-import 'package:moviebooking_21120168/pages/seatbooking.dart';
 import 'firebase_options.dart';
 
 void main() async {

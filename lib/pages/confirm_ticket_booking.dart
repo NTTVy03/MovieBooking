@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:moviebooking_21120168/pages/home.dart';
 
 class ConfirmTicketBookingPage extends StatelessWidget {
   const ConfirmTicketBookingPage({super.key});
