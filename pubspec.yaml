@@ -43,6 +43,7 @@ dependencies:
   firebase_auth: ^4.14.1
   firebase_core: ^2.23.0
   book_my_seat: ^1.0.1
+  carousel_slider: ^4.2.1
 
 dev_dependencies:
   flutter_test:

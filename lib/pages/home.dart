@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:moviebooking_21120168/data/globals.dart';
 import 'package:moviebooking_21120168/pages/allmovie.dart';
 import 'package:moviebooking_21120168/pages/moviepage.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({super.key});
@@ -53,28 +54,61 @@ class HomePage extends StatelessWidget {
                 ],
               ),
 
-              const SizedBox(height: 20),
+              const SizedBox(height: 40),
 
-              // new movies stack
-              Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Stack(
-                  alignment: AlignmentDirectional.center,
-                  children: [
-                    for (var i = 0; i < hotMovies.length; i++)
-                      SizedBox(
-                        height: 350,
-                        width: 180,
-                        child: ClipRRect(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10)),
-                          child: Image.asset(
-                            hotMovies[i]['img_url'],
-                            fit: BoxFit.fill,
-                          ),
+              // new movies stack -> auto switch sliders
+              CarouselSlider.builder(
+                options: CarouselOptions(
+                  height: 360,
+                  aspectRatio: 16 / 9,
+                  viewportFraction: 0.8,
+                  initialPage: 0,
+                  enableInfiniteScroll: true,
+                  reverse: false,
+                  autoPlay: true,
+                  autoPlayInterval: const Duration(seconds: 3),
+                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enlargeCenterPage: true,
+                  enlargeFactor: 0.3,
+                  // onPageChanged: callbackFunction,
+                  scrollDirection: Axis.horizontal,
+                ),
+                itemCount: hotMovies.length,
+                itemBuilder:
+                    (BuildContext context, int index, int pageViewIndex) =>
+                        GestureDetector(
+                  onTap: () => {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MoviePage(
+                          index: hotMovies[index]['id'],
                         ),
                       ),
-                  ],
+                    )
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 8.0, right: 8),
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          // image
+                          SizedBox(
+                            height: 320,
+                            width: 180,
+                            child: ClipRRect(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(20)),
+                              child: Image.asset(
+                                hotMovies[index]['img_url'],
+                                fit: BoxFit.fill,
+                              ),
+                            ),
+                          ),
+                        ]),
+                  ),
                 ),
               ),
 
@@ -123,7 +157,7 @@ class HomePage extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: (context) => MoviePage(
-                            index: index,
+                            index: listMovies[index]['id'],
                           ),
                         ),
                       )

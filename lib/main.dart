@@ -38,16 +38,15 @@ class _MyAppState extends State<MyApp> {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'CGVy',
-      home:
-          // ConfirmTicketBookingPage(),
+      home: AuthPage(),
 
-          SeatBookingPage(
-        time: "9:30 AM",
-        date: "FRIDAY, 12",
-        movieTitle: "Ant Man and The Wasp",
-        theater: "Sathyam Cinemas: Royalpettah",
-        imgUrl: "assets/images/allmovies/img5.jpg",
-      ),
+      //   SeatBookingPage(
+      // time: "9:30 AM",
+      // date: "FRIDAY, 12",
+      // movieTitle: "Ant Man and The Wasp",
+      // theater: "Sathyam Cinemas: Royalpettah",
+      // imgUrl: "assets/images/allmovies/img5.jpg",
+      // ),
     );
   }
 }
