@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:moviebooking_21120168/pages/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:moviebooking_21120168/components/trailer.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -38,9 +37,6 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'CGVy',
       home: AuthPage(),
-
-      //  TrailerPage(
-      //     trailerURL: "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW"),
     );
   }
 }

@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:moviebooking_21120168/components/header.dart';
+import 'package:moviebooking_21120168/components/hot_movie_card.dart';
+import 'package:moviebooking_21120168/components/movie_poster.dart';
 import 'package:moviebooking_21120168/data/globals.dart';
 import 'package:moviebooking_21120168/pages/allmovie.dart';
 import 'package:moviebooking_21120168/pages/moviepage.dart';
@@ -9,12 +12,6 @@ class HomePage extends StatelessWidget {
   HomePage({super.key});
   final List<Map> listMovies = GlobalsData.getBasicInfoMovies();
   final List<Map> hotMovies = GlobalsData.hotMovies;
-
-  final user = FirebaseAuth.instance.currentUser!;
-
-  void handleSignOut() {
-    FirebaseAuth.instance.signOut();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,34 +23,7 @@ class HomePage extends StatelessWidget {
             child: Column(
               children: [
                 // header
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    // Text
-                    const Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Now Showing ..",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 28),
-                        ),
-                        Text(
-                          "Movies in Chennai",
-                          style: TextStyle(color: Colors.grey),
-                        ),
-                      ],
-                    ),
-
-                    // Avatar
-                    IconButton(
-                      onPressed: handleSignOut,
-                      icon: const Icon(Icons.account_circle),
-                      iconSize: 50,
-                    )
-                  ],
-                ),
+                const Header(),
 
                 const SizedBox(height: 40),
 
@@ -79,42 +49,15 @@ class HomePage extends StatelessWidget {
                   itemCount: hotMovies.length,
                   itemBuilder:
                       (BuildContext context, int index, int pageViewIndex) =>
-                          GestureDetector(
-                    onTap: () => {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => MoviePage(
-                            index: hotMovies[index]['id'],
-                          ),
-                        ),
-                      )
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 8.0, right: 8),
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            // image
-                            SizedBox(
-                              height: 320,
-                              width: 180,
-                              child: ClipRRect(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(20)),
-                                child: Image.asset(
-                                  hotMovies[index]['img_url'],
-                                  fit: BoxFit.fill,
-                                ),
-                              ),
-                            ),
-                          ]),
-                    ),
+                          HotMovieCard(
+                    id: hotMovies[index]['id'],
+                    imgUrl: hotMovies[index]['img_url'],
+                    width: 200,
+                    height: 320,
                   ),
                 ),
 
-                const SizedBox(height: 10),
+                const SizedBox(height: 50),
 
                 // list view movies
                 Padding(
