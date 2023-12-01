@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:moviebooking_21120168/data/globals.dart';
+import 'package:moviebooking_21120168/pages/home.dart';
 import 'package:moviebooking_21120168/pages/moviepage.dart';
 
 class AllMoviePage extends StatefulWidget {
@@ -10,8 +12,14 @@ class AllMoviePage extends StatefulWidget {
 }
 
 class _AllMoviePageState extends State<AllMoviePage> {
-  List<Map> listMovies = GlobalsData.getBasicInfoMovies();
+  late List<Map> listMovies;
   final TextEditingController _searchcontroller = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    listMovies = GlobalsData.getBasicInfoMovies();
+  }
 
   void searchMovies(String searchText) {
     String subTitle = searchText.replaceAll('\n', '');
@@ -52,7 +60,15 @@ class _AllMoviePageState extends State<AllMoviePage> {
 
                   // Avatar
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      FirebaseAuth.instance.signOut();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => HomePage(),
+                        ),
+                      );
+                    },
                     icon: const Icon(Icons.account_circle),
                     iconSize: 50,
                   )

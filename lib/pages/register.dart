@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_text_fields/material_text_fields.dart';
+import 'package:moviebooking_21120168/pages/auth.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -51,6 +52,13 @@ class _RegisterPage extends State<RegisterPage> {
       Navigator.pop(context);
 
       showSuccessMessage("Account is created");
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => AuthPage(),
+        ),
+      );
     } on FirebaseAuthException catch (e) {
       // pop the loading circle
       Navigator.pop(context);
@@ -59,6 +67,8 @@ class _RegisterPage extends State<RegisterPage> {
         showErrorMessage("Week password");
       } else if (e.code == 'email-already-in-use') {
         showErrorMessage("Email already in use");
+      } else {
+        showErrorMessage(e.code);
       }
     } catch (e) {
       showErrorMessage(e.toString());

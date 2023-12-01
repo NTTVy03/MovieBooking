@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:moviebooking_21120168/components/cinema_schedule.dart';
+import 'package:moviebooking_21120168/components/date.dart';
 import 'package:moviebooking_21120168/components/icon_and_text.dart';
 import 'package:moviebooking_21120168/components/tag.dart';
 import 'package:moviebooking_21120168/data/globals.dart';
@@ -13,16 +15,22 @@ class MoviePage extends StatefulWidget {
 }
 
 class _MoviePageState extends State<MoviePage> {
-  late final Map movieInfo;
-  late final Map movieSchedule;
-  late final String selectedDate;
-  late final String selectedTime;
-  late final String selectedTheater;
+  late Map movieInfo;
+  late List<Map> date;
+  late List<Map> movieSchedule;
+  late int selectedDate;
+  late int selectedTime;
+  late int selectedTheater;
 
   @override
   void initState() {
     super.initState();
     movieInfo = GlobalsData.getMovieInfoByIndex(widget.index);
+    date = GlobalsData.getDate();
+    selectedDate = 1;
+    selectedTime = 0;
+    selectedTheater = 0;
+    movieSchedule = GlobalsData.getMovieSchedule(movieInfo['id'], selectedDate);
   }
 
   @override
@@ -35,18 +43,13 @@ class _MoviePageState extends State<MoviePage> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const SeatBookingPage(
+                builder: (context) => SeatBookingPage(
                   //   SeatBookingPage(
                   time: "9:30 AM",
                   date: "FRIDAY, 12",
-                  movieTitle: "Ant Man and The Wasp",
                   theater: "Sathyam Cinemas: Royalpettah",
-                  imgUrl: "assets/images/allmovies/img5.jpg",
-                  // movieTitle: movieInfo['title'],
-                  // theater: selectedTheater,
-                  // date: selectedDate,
-                  // time: selectedTime,
-                  // imgUrl: movieInfo['img_url'],
+                  movieTitle: movieInfo['title'],
+                  imgUrl: movieInfo['img_url'],
                 ),
               ),
             );
@@ -200,12 +203,50 @@ class _MoviePageState extends State<MoviePage> {
                   ),
                 ),
 
+                const SizedBox(height: 30),
                 // SCHEDULE here
+                // DATE
+                SizedBox(
+                  height: 75,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: date.length,
+                    itemBuilder: (BuildContext builderContext, int index) =>
+                        DateBlock(
+                      onTap: onTapDate,
+                      id: date[index]['id'],
+                      order: date[index]['order'],
+                      date: date[index]['date'].toString(),
+                      isSelected: (date[index]['id'] == selectedDate),
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 30),
+                // SCHEDULE
+                Expanded(
+                  child: ListView.builder(
+                    scrollDirection: Axis.vertical,
+                    itemCount: movieSchedule.length,
+                    itemBuilder: (BuildContext builderContext, int index) =>
+                        CinemaSchedule(
+                      cinema: movieSchedule[index]['cinema'],
+                      schedule: movieSchedule[index]['listtime'],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  void onTapDate() {
+    // setState(() {
+    //   selectedDate = id;
+    //   movieSchedule =
+    // });
   }
 }

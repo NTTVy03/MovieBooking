@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moviebooking_21120168/Util/seatnumber.dart';
 import 'package:moviebooking_21120168/components/border_radius_text.dart';
-import 'package:moviebooking_21120168/components/color_circle_text.dart';
+import 'package:moviebooking_21120168/components/color_seatstate_text.dart';
 import 'package:moviebooking_21120168/components/payable.dart';
 import 'package:moviebooking_21120168/components/ticket.dart';
 import 'package:moviebooking_21120168/data/globals.dart';
@@ -28,12 +28,14 @@ class SeatBookingPage extends StatefulWidget {
 }
 
 class _SeatBookingPageState extends State<SeatBookingPage> {
-  late final List<List<SeatState>> seatstate;
-  Set<SeatNumber> selectedSeats = {};
+  late List<List<SeatState>> seatstate;
+  late Set<SeatNumber> selectedSeats;
   double price = 5;
+
   @override
   void initState() {
     super.initState();
+    selectedSeats = {};
     seatstate = GlobalsData.getSeatState(
         widget.movieTitle, widget.theater, widget.date, widget.time);
   }
@@ -142,16 +144,16 @@ class _SeatBookingPageState extends State<SeatBookingPage> {
                 const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    ColorCircleWithText(
-                      color: Colors.grey,
+                    ColorSeatstateWithText(
+                      svgName: "assets/images/seatstate/available.svg",
                       text: "Available",
                     ),
-                    ColorCircleWithText(
-                      color: Colors.black,
+                    ColorSeatstateWithText(
+                      svgName: "assets/images/seatstate/booked.svg",
                       text: "Booked",
                     ),
-                    ColorCircleWithText(
-                      color: Colors.blue,
+                    ColorSeatstateWithText(
+                      svgName: "assets/images/seatstate/selected.svg",
                       text: "Selected",
                     ),
                   ],
@@ -164,41 +166,38 @@ class _SeatBookingPageState extends State<SeatBookingPage> {
                   alignment: Alignment.center,
                   width: double.maxFinite,
                   height: 300,
-                  child: Center(
-                    child: Column(children: [
-                      // SCREEN
-                      Container(
-                        height: 20,
-                        decoration: const BoxDecoration(
-                          image: DecorationImage(
-                            image: AssetImage(
-                                "assets/images/moviescreen/screen.png"),
-                            fit: BoxFit.fill,
-                          ),
+                  child: Column(children: [
+                    // SCREEN
+                    Container(
+                      height: 20,
+                      decoration: const BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(
+                              "assets/images/moviescreen/screen.png"),
+                          fit: BoxFit.fill,
                         ),
                       ),
+                    ),
 
-                      const SizedBox(height: 16.0),
+                    const SizedBox(height: 16.0),
 
-                      // SEAT GRID
-                      SeatLayoutWidget(
-                        onSeatStateChanged: manageSeatStateChange,
-                        stateModel: SeatLayoutStateModel(
-                          pathDisabledSeat:
-                              'assets/images/seatstate/booked.svg',
-                          pathSelectedSeat:
-                              'assets/images/seatstate/selected.svg',
-                          pathSoldSeat: 'assets/images/seatstate/booked.svg',
-                          pathUnSelectedSeat:
-                              'assets/images/seatstate/available.svg',
-                          rows: seatstate.length,
-                          cols: seatstate[0].length,
-                          seatSvgSize: 20,
-                          currentSeatsState: seatstate,
-                        ),
+                    // SEAT GRID
+                    SeatLayoutWidget(
+                      onSeatStateChanged: manageSeatStateChange,
+                      stateModel: SeatLayoutStateModel(
+                        pathDisabledSeat: 'assets/images/seatstate/booked.svg',
+                        pathSelectedSeat:
+                            'assets/images/seatstate/selected.svg',
+                        pathSoldSeat: 'assets/images/seatstate/booked.svg',
+                        pathUnSelectedSeat:
+                            'assets/images/seatstate/available.svg',
+                        rows: seatstate.length,
+                        cols: seatstate[0].length,
+                        seatSvgSize: 20,
+                        currentSeatsState: seatstate,
                       ),
-                    ]),
-                  ),
+                    ),
+                  ]),
                 ),
 
                 const SizedBox(height: 10.0),
