@@ -42,25 +42,25 @@ class _SeatBookingPageState extends State<SeatBookingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const ConfirmTicketBookingPage(),
-              ),
-            );
-          },
-          backgroundColor: Colors.blue,
-          child: const Icon(
-            Icons.arrow_forward,
-            color: Colors.white,
-          ),
+    return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const ConfirmTicketBookingPage(),
+            ),
+          );
+        },
+        backgroundColor: Colors.blue,
+        child: const Icon(
+          Icons.arrow_forward,
+          color: Colors.white,
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        body: Container(
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      body: SafeArea(
+        child: Container(
           decoration: BoxDecoration(
             image: DecorationImage(
               opacity: 0.3,

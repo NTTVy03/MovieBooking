@@ -3,6 +3,7 @@ import 'package:moviebooking_21120168/components/cinema_schedule.dart';
 import 'package:moviebooking_21120168/components/date.dart';
 import 'package:moviebooking_21120168/components/icon_and_text.dart';
 import 'package:moviebooking_21120168/components/tag.dart';
+import 'package:moviebooking_21120168/components/trailer.dart';
 import 'package:moviebooking_21120168/data/globals.dart';
 import 'package:moviebooking_21120168/pages/seatbooking.dart';
 
@@ -35,33 +36,33 @@ class _MoviePageState extends State<MoviePage> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        // BOTTOM RIGHT ARROW BUTTON
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => SeatBookingPage(
-                  //   SeatBookingPage(
-                  time: "9:30 AM",
-                  date: "FRIDAY, 12",
-                  theater: "Sathyam Cinemas: Royalpettah",
-                  movieTitle: movieInfo['title'],
-                  imgUrl: movieInfo['img_url'],
-                ),
+    return Scaffold(
+      // BOTTOM RIGHT ARROW BUTTON
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => SeatBookingPage(
+                //   SeatBookingPage(
+                time: "9:30 AM",
+                date: "FRIDAY, 12",
+                theater: "Sathyam Cinemas: Royalpettah",
+                movieTitle: movieInfo['title'],
+                imgUrl: movieInfo['img_url'],
               ),
-            );
-          },
-          backgroundColor: Colors.blue,
-          child: const Icon(
-            Icons.arrow_forward,
-            color: Colors.white,
-          ),
+            ),
+          );
+        },
+        backgroundColor: Colors.blue,
+        child: const Icon(
+          Icons.arrow_forward,
+          color: Colors.white,
         ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-        body: Container(
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      body: SafeArea(
+        child: Container(
           // SET Background
           decoration: BoxDecoration(
             image: DecorationImage(
@@ -180,24 +181,47 @@ class _MoviePageState extends State<MoviePage> {
 
                       const SizedBox(height: 10),
                       // Read more
-                      GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          width: 200,
-                          decoration: BoxDecoration(
-                            color: Colors.grey[200], // Set the background color
-                            borderRadius: BorderRadius.circular(
-                                20.0), // Adjust the border radius as needed
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 1.0), // Adjust the padding as needed
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {},
+                            child: Container(
+                              width: 200,
+                              decoration: BoxDecoration(
+                                color: Colors
+                                    .grey[200], // Set the background color
+                                borderRadius: BorderRadius.circular(
+                                    20.0), // Adjust the border radius as needed
+                              ),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical:
+                                      1.0), // Adjust the padding as needed
 
-                          child: const Icon(
-                            Icons.keyboard_arrow_down,
-                            size: 25,
-                            color: Colors.black54,
+                              child: const Icon(
+                                Icons.keyboard_arrow_down,
+                                size: 25,
+                                color: Colors.black54,
+                              ),
+                            ),
                           ),
-                        ),
+
+                          // Trailer button
+                          GestureDetector(
+                            onTap: () {
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) => TrailerPopup(
+                                  trailerURL: movieInfo['trailer'],
+                                ),
+                              );
+                            },
+                            child: const IconAndText(
+                              icon: Icons.movie_filter,
+                              text: "Trailer",
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),

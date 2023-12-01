@@ -34,6 +34,7 @@ class GlobalsData {
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
       'tag': ['Action', 'Romantic'],
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
     },
     {
       'id': 2,
@@ -45,6 +46,7 @@ class GlobalsData {
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
       'tag': ['Romantic', 'Adventure'],
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
     },
     {
       'id': 3,
@@ -56,6 +58,7 @@ class GlobalsData {
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
       'tag': ['Action', 'Adventure'],
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
     },
     {
       'id': 4,
@@ -67,6 +70,7 @@ class GlobalsData {
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
       'tag': ['Action', 'Romantic'],
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
     },
     {
       'id': 5,
@@ -78,6 +82,7 @@ class GlobalsData {
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
       'tag': ['Romantic', 'Adventure'],
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
     },
     {
       'id': 6,
@@ -89,6 +94,7 @@ class GlobalsData {
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
       'tag': ['Action', 'Romantic'],
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
     },
     {
       'id': 7,
@@ -100,6 +106,7 @@ class GlobalsData {
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
       'tag': ['Action', 'Adventure'],
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
     },
     {
       'id': 8,
@@ -111,6 +118,7 @@ class GlobalsData {
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
       'tag': ['Romantic', 'Adventure'],
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
     },
     {
       'id': 9,
@@ -122,6 +130,7 @@ class GlobalsData {
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
       'tag': ['Action', 'Adventure'],
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
     },
     {
       'id': 10,
@@ -133,6 +142,7 @@ class GlobalsData {
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
       'tag': ['Action', 'Adventure'],
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
     },
     {
       'id': 11,
@@ -143,6 +153,7 @@ class GlobalsData {
       'quality': 'IMAX 2D',
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
       'tag': ['Romantic', 'Adventure'],
     },
     {
@@ -155,6 +166,7 @@ class GlobalsData {
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
       'tag': ['Action', 'Cute'],
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
     },
     {
       'id': 13,
@@ -166,6 +178,7 @@ class GlobalsData {
       'synopsis':
           "The film tells the story of Ilya Goryunov, who ends up behind bars on a false charge. Once on the outside, he realizes that it is no longer possible to return to his former life for which is his so nostalgic and he decides to take revenge on the policeman whose fault it was that he ended up in prison. As a result of their meeting, Ilya ends up in possession of his enemy's smartphone and through a series of texts gradually takes his place",
       'tag': ['Action', 'Cute'],
+      'trailer': "https://youtu.be/Yuy029-UlOE?si=1BGCRNkLCSzXTeRW",
     },
   ];
   static List<List<SeatState>> seatstate = [
