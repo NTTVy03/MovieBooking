@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:moviebooking_21120168/pages/auth.dart';
 
 class Header extends StatefulWidget {
   const Header({super.key});
@@ -15,7 +14,7 @@ class _HeaderState extends State<Header> {
   void handleSignOut() {
     FirebaseAuth.instance.signOut();
 
-    // Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
+    Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
 
     // Navigator.pop(context);
 

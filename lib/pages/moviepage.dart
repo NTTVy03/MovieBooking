@@ -267,10 +267,5 @@ class _MoviePageState extends State<MoviePage> {
     );
   }
 
-  void onTapDate() {
-    // setState(() {
-    //   selectedDate = id;
-    //   movieSchedule =
-    // });
-  }
+  void onTapDate() {}
 }

@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:material_text_fields/material_text_fields.dart';
-import 'package:moviebooking_21120168/pages/auth.dart';
 
 class RegisterPage extends StatefulWidget {
   final Function()? onTap;
@@ -12,8 +11,6 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPage extends State<RegisterPage> {
-  // static const routeName = '/registerpage';
-
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
@@ -33,36 +30,13 @@ class _RegisterPage extends State<RegisterPage> {
       return;
     }
 
-    showDialog(
-      context: context,
-      builder: (context) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-    );
-
     try {
       await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text,
         password: _passwordController.text,
       );
-
-      // pop the loading circle
-      Navigator.pop(context);
-
-      showSuccessMessage("Account is created");
-
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => AuthPage(),
-        ),
-      );
+      showSuccessMessage("Account is created.\nLet's explore app!");
     } on FirebaseAuthException catch (e) {
-      // pop the loading circle
-      Navigator.pop(context);
-
       if (e.code == 'weak-password') {
         showErrorMessage("Week password");
       } else if (e.code == 'email-already-in-use') {
@@ -81,11 +55,11 @@ class _RegisterPage extends State<RegisterPage> {
       builder: (context) {
         return AlertDialog(
           title: const Text('Done'),
-          content: Text(message), // Set the error message as the content
+          content: Text(message),
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.pop(context); // Close the dialog
+                Navigator.pop(context);
               },
               child: const Text('OK'),
             ),
@@ -101,11 +75,11 @@ class _RegisterPage extends State<RegisterPage> {
       builder: (context) {
         return AlertDialog(
           title: const Text('Error'),
-          content: Text(message), // Set the error message as the content
+          content: Text(message),
           actions: [
             TextButton(
               onPressed: () {
-                Navigator.pop(context); // Close the dialog
+                Navigator.pop(context);
               },
               child: const Text('OK'),
             ),
@@ -117,9 +91,6 @@ class _RegisterPage extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    // var screenWidth = MediaQuery.of(context).size.width;
-    // var screenHeight = MediaQuery.of(context).size.height;
-
     return Scaffold(
         body: SingleChildScrollView(
       child: SafeArea(
@@ -138,35 +109,39 @@ class _RegisterPage extends State<RegisterPage> {
           ),
           const SizedBox(height: 50),
           MaterialTextField(
-              keyboardType: TextInputType.text,
-              hint: 'Username',
-              labelText: 'Username',
-              textInputAction: TextInputAction.next,
-              prefixIcon: const Icon(Icons.account_circle_outlined),
-              controller: _userNameController),
+            keyboardType: TextInputType.text,
+            hint: 'Username',
+            labelText: 'Username',
+            textInputAction: TextInputAction.next,
+            prefixIcon: const Icon(Icons.account_circle_outlined),
+            controller: _userNameController,
+          ),
           MaterialTextField(
-              keyboardType: TextInputType.emailAddress,
-              hint: 'Email',
-              labelText: 'Email',
-              textInputAction: TextInputAction.next,
-              prefixIcon: const Icon(Icons.email_outlined),
-              controller: _emailController),
+            keyboardType: TextInputType.emailAddress,
+            hint: 'Email',
+            labelText: 'Email',
+            textInputAction: TextInputAction.next,
+            prefixIcon: const Icon(Icons.email_outlined),
+            controller: _emailController,
+          ),
           MaterialTextField(
-              keyboardType: TextInputType.visiblePassword,
-              hint: 'Password',
-              labelText: 'Password',
-              textInputAction: TextInputAction.done,
-              obscureText: true,
-              prefixIcon: const Icon(Icons.lock),
-              controller: _passwordController),
+            keyboardType: TextInputType.visiblePassword,
+            hint: 'Password',
+            labelText: 'Password',
+            textInputAction: TextInputAction.done,
+            obscureText: true,
+            prefixIcon: const Icon(Icons.lock),
+            controller: _passwordController,
+          ),
           MaterialTextField(
-              keyboardType: TextInputType.visiblePassword,
-              hint: 'Confirm Password',
-              labelText: 'Confirm Password',
-              textInputAction: TextInputAction.done,
-              obscureText: true,
-              prefixIcon: const Icon(Icons.lock),
-              controller: _confirmPwController),
+            keyboardType: TextInputType.visiblePassword,
+            hint: 'Confirm Password',
+            labelText: 'Confirm Password',
+            textInputAction: TextInputAction.done,
+            obscureText: true,
+            prefixIcon: const Icon(Icons.lock),
+            controller: _confirmPwController,
+          ),
           const SizedBox(height: 40),
           Padding(
             padding: const EdgeInsets.only(
